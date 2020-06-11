@@ -1,0 +1,13 @@
+.item {
+  display: flex;
+  align-items: center;
+
+
+  button {
+    margin: 0 0 0 15px;
+  }
+
+  .completed {
+    text-decoration: line-through;
+  }
+}
