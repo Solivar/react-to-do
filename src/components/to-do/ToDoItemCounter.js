@@ -8,7 +8,7 @@ class ToDoItemCounter extends React.Component {
 
     return (
       <div className="counter">
-        <p>{`${count}/${ITEM_MAX_COUNT}`}</p>
+        <p className={this.props.error ? 'error' : ''}>{`${count}/${ITEM_MAX_COUNT}`}</p>
       </div>
     );
   }

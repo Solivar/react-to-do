@@ -1,6 +1,7 @@
 import React from 'react';
 
 import ITEM_MAX_COUNT from '../../consts';
+import ToDoItemCounter from './ToDoItemCounter';
 
 class ToDoAdd extends React.Component {
   constructor(props) {
@@ -8,16 +9,15 @@ class ToDoAdd extends React.Component {
 
     this.state = {
       value: '',
-      error: false,
+      error: '',
     };
   }
 
-  isMaxCount() {
+  isMaxCount = () =>{
     return this.props.items.length === ITEM_MAX_COUNT;
   }
 
   isFormValid = () => {
-    this.setState({ error: false });
 
     if (!this.state.value) {
       this.setState({ error: 'Task description required' });
@@ -47,12 +47,21 @@ class ToDoAdd extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <label>
-          Add task: <input type="text" value={this.state.value} onChange={this.handleChange}/>
-        </label>
-        <input type="submit" value="Add"/>
+        <div className="label-group">
+          <label htmlFor="add-item">Add a task</label>
+          <ToDoItemCounter items={this.props.items} error={this.state.error}/>
+        </div>
+        <div className="input-group">
+          <input
+            id="add-item"
+            type="text"
+            value={this.state.value}
+            onChange={this.handleChange}
+          />
+          <input type="submit" value="Add"/>
+        </div>
         {this.state.error &&
-          <p>{this.state.error}</p>
+          <p className="error">{this.state.error}</p>
         }
       </form>
     );

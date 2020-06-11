@@ -5,7 +5,7 @@ class ToDoItem extends React.Component {
     const { description, isComplete } = this.props.item;
 
     return (
-      <div className="details">
+      <div className="details" onClick={() => this.props.toggleComplete()}>
         <p className={isComplete ? 'completed' : ''}>{description}</p>
       </div>
     );

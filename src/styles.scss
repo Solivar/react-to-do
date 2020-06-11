@@ -1,24 +1,117 @@
-@import './components/to-do/todo.scss';
+$color-white: #ffffff;
+$color-black: #292929;
+$color-primary: #11d0c4;
+$color-secondary: #2b407a;
+$color-red: #e02020;
 
-.contact-card {
+
+html, body {
+  height: 100%;
+}
+
+button, input[type="submit"] {
+  cursor: pointer;
+}
+
+body {
+  background: $color-primary;
+  background: linear-gradient(90deg, rgba($color-primary, 10%), rgba($color-secondary, 90%));
+  color: #292929;
   display: flex;
-  padding: 10px;
-  color: #ffffff;
-  background-color: rgb(42, 84, 104);
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  box-shadow: 10px 10px 25px -16px rgba(0, 0, 0, 0.75);
-  border-radius: 10px;
-  max-width: 500px;
-  max-height: 125px;
-  margin-bottom: 10px;
+  justify-content: center;
 }
 
-.contact-card p {
-  margin-left: 10px;
-  margin-top: 0;
+h1 {
+  text-align: center;
+  margin: 0 0 40px 0;
 }
 
-button {
-  margin-left: 10px;
-  margin-bottom: 10px;
+.todo {
+  margin-top: 50px;
+  width: 320px;
+  background: $color-white;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  p {
+    margin: 0;
+    word-wrap: break-word;
+  }
+
+  button {
+    margin: 0 0 0 15px;
+    border: 2px solid $color-secondary;
+    font-weight: 700;
+    background: none;
+    padding: 4px 10px;
+  }
+
+  .details {
+    flex: 1 0 150px;
+    cursor: pointer;
+  }
+
+  .completed {
+    text-decoration: line-through;
+  }
+}
+
+form {
+  label {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .label-group {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .input-group {
+    display: flex;
+    margin-bottom: 15px;
+
+    input {
+      border: 2px solid $color-primary;
+      height: 36px;
+      box-sizing: border-box;
+      padding: 5px 10px;
+    }
+
+    input[type="text"] {
+      flex-grow: 1;
+    }
+
+    input[type="submit"] {
+      width: 50px;
+      height: 36px;
+      background: $color-primary;
+      color: $color-white;
+      font-weight: 700;
+    }
+  }
+}
+
+.error {
+  color: $color-red;
+  margin: 0 0 15px;
+}
+
+.counter {
+  color: $color-secondary;
+  font-weight: 700;
+
+  p {
+    margin: 0;
+  }
 }

@@ -12,10 +12,10 @@ class ToDoList extends React.Component {
             <ToDoItem
               item={item}
               deleteItem={this.onDeleteItem}
+              toggleComplete={() => this.props.toggleComplete(i)}
             />
             <div className="actions">
-              <button onClick={() => this.props.toggleComplete(i)}>Complete</button>
-              <button onClick={() => this.props.deleteItem(i)}>Delete</button>
+              <button onClick={() => this.props.deleteItem(i)}>X</button>
             </div>
           </div>
         ))}

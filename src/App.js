@@ -5,9 +5,10 @@ import "./styles.scss";
 
 function App() {
   return (
-    <>
+    <div className='todo'>
+      <h1>ToDo</h1>
       <ToDo/>
-    </>
+    </div>
   );
 }
 

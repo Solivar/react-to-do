@@ -1,7 +1,6 @@
 import React from 'react';
 
 import ToDoAdd from './ToDoAdd';
-import ToDoItemCounter from './ToDoItemCounter';
 import ToDoList from './ToDoList';
 
 class ToDo extends React.Component {
@@ -59,7 +58,6 @@ class ToDo extends React.Component {
           items={this.state.items}
           addItem={this.onAddItem}
         />
-        <ToDoItemCounter items={this.state.items}/>
         <ToDoList
           items={this.state.items}
           deleteItem={this.onDeleteItem}
