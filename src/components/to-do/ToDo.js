@@ -7,18 +7,34 @@ class ToDo extends React.Component {
   constructor() {
     super();
 
-    this.state = {
-      items: [
+    let tasks = localStorage.getItem('tasks');
+
+    if (!tasks) {
+      tasks = [
         {
-          description: 'desctiopregiojpdoipgdf',
+          description: 'go for a walk',
           isComplete: false,
         },
         {
-          description: 'kuntarrow',
+          description: 'learn React for 2 hours',
           isComplete: true,
         },
-      ],
+      ];
+    } else {
+      tasks = JSON.parse(tasks);
     }
+
+    this.state = {
+      items: tasks,
+    }
+  }
+
+  updateItemList(items) {
+    localStorage.setItem('tasks', JSON.stringify(items));
+
+    this.setState({
+      items,
+    });
   }
 
   onAddItem = (description) => {
@@ -28,18 +44,14 @@ class ToDo extends React.Component {
       isComplete: false,
     });
 
-    this.setState({
-      items,
-    });
+    this.updateItemList(items);
   };
 
   onDeleteItem = (index) => {
     const items = this.state.items;
     items.splice(index, 1);
 
-    this.setState({
-      items,
-    });
+    this.updateItemList(items);
   }
 
   onToggleCompletion = (index) => {

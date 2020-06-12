@@ -84,12 +84,16 @@ form {
   .character-count {
     font-size: 14px;
     width: 63px;
+    height: 36px;
     text-align: right;
+    position: absolute;
+    top: 0;
+    right: 50px;
     color: $color-white;
     border: 2px solid $color-primary;
     border-left: none;
     border-right: none;
-
+    pointer-events: none;
     padding: 5px;
     box-sizing: border-box;
 
@@ -99,8 +103,8 @@ form {
   }
 
   .input-group {
-    display: flex;
     margin-bottom: 15px;
+    position: relative;
 
     input {
       border: 2px solid $color-primary;
@@ -110,7 +114,8 @@ form {
     }
 
     input[type="text"] {
-      width: calc(100% - 113px);
+      width: calc(100% - 50px);
+      padding-right: 63px;
       border-right: none;
     }
 
