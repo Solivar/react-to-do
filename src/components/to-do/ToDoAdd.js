@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ITEM_MAX_COUNT from '../../consts';
+import { TASK_DESC_LENGTH, ITEM_MAX_COUNT } from '../../consts';
 import ToDoItemCounter from './ToDoItemCounter';
 
 class ToDoAdd extends React.Component {
@@ -10,6 +10,7 @@ class ToDoAdd extends React.Component {
     this.state = {
       value: '',
       error: '',
+      isFocused: false,
     };
   }
 
@@ -18,6 +19,7 @@ class ToDoAdd extends React.Component {
   }
 
   isFormValid = () => {
+    this.setState({ error: false });
 
     if (!this.state.value) {
       this.setState({ error: 'Task description required' });
@@ -41,7 +43,23 @@ class ToDoAdd extends React.Component {
   }
 
   handleChange = (event) => {
+    if (event.target.value.length > TASK_DESC_LENGTH) {
+      return;
+    }
+
     this.setState({ value: event.target.value });
+  }
+
+  handleFocus = () => {
+    this.setState({
+      isFocused: true,
+    });
+  }
+
+  handleBlur = () => {
+    this.setState({
+      isFocused: false,
+    });
   }
 
   render() {
@@ -49,7 +67,10 @@ class ToDoAdd extends React.Component {
       <form onSubmit={this.handleSubmit}>
         <div className="label-group">
           <label htmlFor="add-item">Add a task</label>
-          <ToDoItemCounter items={this.props.items} error={this.state.error}/>
+          <ToDoItemCounter
+            items={this.props.items}
+            error={this.props.items.length === ITEM_MAX_COUNT && this.state.error ? this.state.error : false }
+          />
         </div>
         <div className="input-group">
           <input
@@ -57,7 +78,12 @@ class ToDoAdd extends React.Component {
             type="text"
             value={this.state.value}
             onChange={this.handleChange}
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
           />
+          <span className={`character-count ${this.state.isFocused ? 'visible' :'' }`}>
+            { `${this.state.value.length}/${TASK_DESC_LENGTH}` }
+          </span>
           <input type="submit" value="Add"/>
         </div>
         {this.state.error &&

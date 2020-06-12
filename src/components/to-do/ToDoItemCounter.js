@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ITEM_MAX_COUNT from '../../consts';
+import { ITEM_MAX_COUNT } from '../../consts';
 
 class ToDoItemCounter extends React.Component {
   render() {
