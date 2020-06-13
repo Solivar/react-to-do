@@ -26,7 +26,7 @@ class ToDoAdd extends React.Component {
 
       return false;
     } else if (this.isMaxCount()) {
-      this.setState({ error: `Don't bite more than you can chew` });
+      this.setState({ error: `Don't bite more off than you can chew` });
 
       return false;
     }
